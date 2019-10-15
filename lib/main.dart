@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'mysplash.dart';
 
 void main() {
   runApp(
-    MaterialApp(home: HomePageDialogflowV2()),
+    MaterialApp(debugShowCheckedModeBanner: false,
+      home: MyApp(),
+      theme: ThemeData(
+        primaryColor:Colors.orange,
+        primarySwatch: Colors.orange,
+      ),
+      ),
+      
   );
 }
 
@@ -32,7 +41,7 @@ class _HomePageDialogflowV2 extends State<HomePageDialogflowV2> {
                 controller: _textController,
                 onSubmitted: _handleSubmitted,
                 decoration:
-                    new InputDecoration.collapsed(hintText: "Send a message"),
+                     InputDecoration.collapsed(hintText: "Send a message"),
               ),
             ),
             new Container(
@@ -72,6 +81,7 @@ class _HomePageDialogflowV2 extends State<HomePageDialogflowV2> {
       name: "User",
       type: true,
     );
+   
     setState(() {
       _messages.insert(0, message);
     });
@@ -82,7 +92,9 @@ class _HomePageDialogflowV2 extends State<HomePageDialogflowV2> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Dialogflow V2"),
+        title: Center(child: new Text("firebot")),
+        elevation: 0.0,
+        backgroundColor: Colors.orange,
       ),
       body: new Column(children: <Widget>[
         new Flexible(
